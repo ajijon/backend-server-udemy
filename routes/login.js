@@ -8,6 +8,8 @@ var app = express();
 
 var Usuario = require('../models/usuario');
 
+
+
 app.post('/', (req, res) => {
 
     var body = req.body;
@@ -46,7 +48,6 @@ app.post('/', (req, res) => {
         usuarioDB.password = ':)';
         var token = jwt.sign({ usuario: usuarioDB }, SEED, { expiresIn: 14400 }); //4 hrs (14400/60 result/60 = 4 hrs)
 
-
         res.status(200).json({
             oK: true,
             usuario: usuarioDB,
@@ -58,15 +59,5 @@ app.post('/', (req, res) => {
     });
 
 });
-
-
-
-
-
-
-
-
-
-
 
 module.exports = app;
